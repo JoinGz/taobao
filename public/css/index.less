@@ -16,6 +16,10 @@ body {
 .rmbg{
     background: rgba(255, 0, 54, 1);
 }
+//字体淘宝色
+.f40{
+    color:#f40 !important;
+}
 .box {
     background: @f5f5f5;
     font-size: 12px;
@@ -222,11 +226,30 @@ body {
                 font-size: 12px;
                 color: #ccc;
             }
+            .searchend{
+                position:absolute;
+                //left:0px;
+                top:40px;
+                //border: 1px solid #969896;
+                width: 500px;
+                z-index: 1;
+                li{
+                    background: #fff;
+                    color:black;
+                    padding: 2px 8px ;
+                    &:hover{
+                        background: #f1f1f1;
+                    }
+                    
+                }
+            }
         }
         .search-bottom {
             height: 25px;
-            width: 625px;
+            width: 585px;
             padding: 3px 0 0 0;
+            float: left;
+            overflow: hidden;
             a {
                 font-size: 12px;
                 margin-right: 5px;
@@ -235,8 +258,20 @@ body {
                     color: #f40;
                 }
             }
-            div {
-                float: right;
+            
+        }
+        .more{
+            float: left;
+            width: 40px;
+            height: 25px;
+            line-height: 25px;
+            a {
+                font-size: 12px;
+                
+                color: #666;
+                &:hover {
+                    color: #f40;
+                }
             }
         }
     }
@@ -404,6 +439,16 @@ body {
             }
             .bm-t {
                 height: 280px;
+                overflow: hidden;
+                .imgs{
+                    width: 2600px;
+                    
+                    li{
+                        float: left;
+                        width: 520px;
+                        height: 280px;
+                    }
+                }
             }
             .bm-b {
                 height: 230px;

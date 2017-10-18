@@ -149,21 +149,23 @@
 						</div>
 						<div class="search-middle clearfloat">
 							<input type="text" id="search"/>
-							<label for="search">打骨折键盘侠</label>
+							<label for="search">搜索abc试一试</label>
 							<i class="iconfont icon-search"></i>
 							<i class="iconfont icon-camera"></i>
 							<button>搜索</button>
+							<ul class="searchend">
+								
+							</ul>
 						</div>
 						<div class="search-bottom clearfloat">
 							<a href="#">新款连衣裙</a>
 							<a href="">Galaxy S8</a>
 							<a href="">iPhone X</a>
 							<a href="">睡衣</a>
-							<div>
-								<a href="#">更多 &gt;</a>
-							</div>
 						</div>
-
+						<div class="more">
+							<a href="#">更多 &gt;</a>
+						</div>
 					</div>
 					<div class="ad clearfloat">
 						<div>
@@ -369,7 +371,11 @@
 				<div class="b-m clearfloat">
 					<div class="bm-l clearfloat">
 						<div class="bm-t gz-banner">
-							<img src="public/images/banner.jpg" alt="" />
+							<ul class="imgs">
+								<li><img src="public/images/1.jpg" alt="" /></li>
+								
+							</ul>
+							
 							<div class="gz-button">
 								<div>
 									<i class="iconfont icon-jiantou-copy-copy"></i>
@@ -571,5 +577,11 @@
 		</div>
 
 	</body>
+	<script src="public/js/template-native.js"></script>
+	<script type="text/template" id='template'>
+		<%for(var i = 0 ;i<searchbottom.length;i++){%>
+			<a href="<%=searchbottom[i].url%>" class="<%=searchbottom[i].class%>"><%=searchbottom[i].name%></a>
+		<%}%>
+	</script>
 <script type="text/javascript" src="public/js/main.js"></script>
 </html>
