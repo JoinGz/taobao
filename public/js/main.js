@@ -107,13 +107,99 @@ window.onload = function(){
 			if(ajax.readyState==4&&ajax.status==200){
 				//console.log(ajax.responseText)
 				var str = ajax.responseText;
-				var obj = JSON.parse(str); //由JSON字符串转换为JSON对象
+				var obj1 = JSON.parse(str); //由JSON字符串转换为JSON对象
 				//console.log(obj.searchbottom[1])
-				var resultStr = template('template',obj);
+				var resultStr = template('template',obj1);
 				//console.log(resultStr);
 				a.innerHTML=resultStr;
 				
 			}
 		}
 	})()
+	
+}
+//banner 轮播
+function animation(ele,mb,time){
+	clearInterval(ele.time);
+	var speed = mb > ele.offsetLeft?50:-50;
+	ele.time =setInterval(function(){
+		var val =  mb - ele.offsetLeft;
+		ele.style.left = speed + ele.offsetLeft+"px";
+		if(Math.abs(val)<Math.abs(speed)){
+			ele.style.left = mb+"px";
+			clearInterval(ele.time);
+		}
+		
+	},time)
+}
+var button = g(".gz-button")[0].children[0];
+var ul = g(".imgs")[0];
+var li = ul.children;
+var ulFather = ul.parentElement;
+var imgwidth = ul.children[0].offsetWidth;
+var n=0;
+var b=0;
+var buttonli=g(".gz-hover")[0].children[0].children;
+var left = g(".gz-button")[0].children[0];
+var right = g(".gz-button")[0].children[1];
+button.onclick=function(){
+	
+	animation(ul,-500,10);
+	
+}
+//增加li
+var newli = ul.children[0].cloneNode(true);
+ul.appendChild(newli);
+function autoPlay(){
+	n++;
+	b++;
+	if(n>li.length-1){
+		ul.style.left = "0px";
+		n=1;
+	}
+	animation(ul,-n*imgwidth,30);
+	if(b>li.length-2){
+		b=0;
+	}
+	for(var i = 0 ;i<buttonli.length;i++){
+		buttonli[i].className="";
+	}
+	buttonli[b].className="getbg";
+}
+var timer = setInterval(autoPlay,2000);
+ulFather.onmouseenter=function(){
+	clearInterval(timer);
+}
+ulFather.onmouseleave=function(){
+	timer = setInterval(autoPlay,2000);
+}
+left.onclick=function(){
+	n--;
+	b--;
+	if(n<0){
+		ul.style.left = -(li.length-1)*imgwidth+"px";
+		n=li.length-2;
+	}
+	animation(ul,-n*imgwidth,30);
+	if(b<0){
+		b=4;
+	}
+	for(var i = 0 ;i<buttonli.length;i++){
+		buttonli[i].className="";
+	}
+	buttonli[b].className="getbg";
+}
+right.onclick=function(){
+	autoPlay();
+}
+for(var i = 0;i<buttonli.length;i++){
+	buttonli[i].index = i;
+	buttonli[i].onclick=function(){
+		n=b=this.index;
+		animation(ul,-n*imgwidth,30);
+		for(var i = 0 ;i<buttonli.length;i++){
+		buttonli[i].className="";
+	}
+	this.className="getbg";
+	}
 }

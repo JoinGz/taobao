@@ -1,55 +1,69 @@
 ﻿{
-	"searchbottom":[{
-			"name":"男皮鞋",
-			"url":"#",
-			"class":"f40"
-	},{
-			"name":"新款男鞋",
-			"url":"#",
-			"class":""
-	},{
-			"name":"1元抢正装",
-			"url":"#",
-			"class":""
-	},{
-			"name":"老人机",
-			"url":"#",
-			"class":""
-	},{
-			"name":"男鞋",
-			"url":"#",
-			"class":""
-	},{
-			"name":"显示器",
-			"url":"#",
-			"class":"f40"
-	},{
-			"name":"夹克外套",
-			"url":"#",
-			"class":""
-	},{
-			"name":"Galaxy S8",
-			"url":"#",
-			"class":"f40"
-	},{
-			"name":"妈妈装",
-			"url":"#",
-			"class":""
-	},{
-			"name":"iPhone X",
-			"url":"#",
-			"class":"f40"
-	},{
-			"name":"夹克",
-			"url":"#",
-			"class":""
-	},{
-			"name":"爸爸装",
-			"url":"#",
-			"class":""
-	}],
-	"banner":['../public/images/1.jpg','../public/images/2.jpg',
-	'../public/images/3.jpg','../public/images/4.jpg','../public/images/5.jpg']
-	
+
+	"searchbottom": [
+		{
+			"name": "男皮鞋",
+			"url": "#",
+			"class": "f40"
+		}, {
+			"name": "新款男鞋",
+			"url": "#",
+			"class": ""
+		}, {
+			"name": "1元抢正装",
+			"url": "#",
+			"class": ""
+		}, {
+			"name": "老人机",
+			"url": "#",
+			"class": ""
+		}, {
+			"name": "男鞋",
+			"url": "#",
+			"class": ""
+		}, {
+			"name": "显示器",
+			"url": "#",
+			"class": "f40"
+		}, {
+			"name": "夹克外套",
+			"url": "#",
+			"class": ""
+		}, {
+			"name": "Galaxy S8",
+			"url": "#",
+			"class": "f40"
+		}, {
+			"name": "妈妈装",
+			"url": "#",
+			"class": ""
+		}, {
+			"name": "iPhone X",
+			"url": "#",
+			"class": "f40"
+		}, {
+			"name": "夹克",
+			"url": "#",
+			"class": ""
+		}, {
+			"name": "爸爸装",
+			"url": "#",
+			"class": ""
+		}
+	],
+
+	"banner": [
+		{
+			"url": "../public/images/1.jpg"
+		}, {
+			"url": "../public/images/2.jpg"
+		}, {
+			"url": "../public/images/3.jpg"
+		}, {
+			"url": "../public/images/4.jpg"
+		}, {
+			"url": "../public/images/5.jpg"
+		}
+	]
 }
 
