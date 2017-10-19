@@ -99,19 +99,22 @@ window.onload = function() {
 	(function() {
 		var a = g(".search-bottom")[0];
 		//var button = g(".gz-button")[0].children[0];
+		var ul = g(".imgs")[0];
+		var li = ul.children;
+		var ulFather = ul.parentElement;
+		var imgwidth = ul.children[0].offsetWidth;
 		var n = 0;
 		var b = 0;
+		var buttonli = g(".gz-hover")[0].children[0].children;
+		var left = g(".gz-button")[0].children[0];
+		var right = g(".gz-button")[0].children[1];
 		//datajson 返回的json数据
 		var datajson;
 		var bmr = g(".bm-r")[0];
 		var bmt = bmr.children[0];
 		var bmb = bmr.children[2];
-		var ul = g(".imgs");
-		for(var i = 0; i < ul.length; i++) {
-			lunbo(ul[i]);
-
-		}
-
+		
+		
 		var ajax = new XMLHttpRequest();
 		ajax.open("POST", "./APi/alldata.php");
 		ajax.send();
@@ -119,22 +122,20 @@ window.onload = function() {
 			if(ajax.readyState == 4 && ajax.status == 200) {
 				//console.log(ajax.responseText)
 				var str = ajax.responseText;
-				datajson = JSON.parse(str);
+				datajson = JSON.parse(str); 
 				//由JSON字符串转换为JSON对象
 				//console.log(obj.searchbottom[1])
 				var resultStr = template('template', datajson);
 				//console.log(datajson);
 				a.innerHTML = resultStr;
-				var ul = g(".imgs")[0];
-				var li = ul.children;
-				li[0].innerHTML = "<img src=" + datajson.banner[0].url + " />";
+				li[0].innerHTML="<img src="+ datajson.banner[0].url +" />";
 				var newli = ul.children[0].cloneNode(true);
 				ul.appendChild(newli);
-				bmt.innerHTML = "<img src=" + datajson.bt[0].url + " />";
-				bmb.innerHTML = "<img src=" + datajson.bt[1].url + " />"
+				bmt.innerHTML="<img src=" + datajson.bt[0].url+ " />";
+				bmb.innerHTML="<img src=" + datajson.bt[1].url+ " />"
 			}
 		}
-
+		
 		function animation(ele, mb, time) {
 			clearInterval(ele.time);
 			var speed = mb > ele.offsetLeft ? 50 : -50;
@@ -149,55 +150,7 @@ window.onload = function() {
 			}, time)
 		}
 
-		function lunbo(ele) {
-			var ul = ele;
-			var li = ele.children;
-			var ulFather = ele.parentElement;
-			var imgwidth = ele.children[0].offsetWidth;
-			var hover = ulFather.getElementsByClassName("gz-hover")[0];
-			var buttonli = hover.children[0].children;
-			var left = ulFather.getElementsByClassName("gz-button")[0].children[0];
-			var right = ulFather.getElementsByClassName("gz-button")[0].children[1];
-
-			 timer = setInterval(autoPlay, 2000);
-
-			ulFather.onmouseenter = function() {
-				clearInterval(timer);
-			}
-			ulFather.onmouseleave = function() {
-				timer = setInterval(autoPlay, 2000);
-			}
-			left.onclick = function() {
-				n--;
-				b--;
-				if(n < 0) {
-					ul.style.left = -(li.length - 1) * imgwidth + "px";
-					n = li.length - 2;
-				}
-				animation(ul, -n * imgwidth, 30);
-				if(b < 0) {
-					b = 4;
-				}
-				for(var i = 0; i < buttonli.length; i++) {
-					buttonli[i].className = "";
-				}
-				buttonli[b].className = "getbg";
-			}
-			right.onclick = function() {
-				autoPlay();
-			}
-			for(var i = 0; i < buttonli.length; i++) {
-				buttonli[i].index = i;
-				buttonli[i].onclick = function() {
-					n = b = this.index;
-					animation(ul, -n * imgwidth, 30);
-					for(var i = 0; i < buttonli.length; i++) {
-						buttonli[i].className = "";
-					}
-					this.className = "getbg";
-				}
-			}
-			function autoPlay() {
+		function autoPlay() {
 			n++;
 			b++;
 			if(n > li.length - 1) {
@@ -208,16 +161,16 @@ window.onload = function() {
 			//ajax.open("GET", "./APi/alldata.php");
 			//ajax.send();
 			//ajax.onreadystatechange = function() {
-			//if(ajax.readyState == 4 && ajax.status == 200) {
-			//var str = ajax.responseText;
-			//var datajson = JSON.parse(str);
-			var num = n;
-			if(num > li.length - 2) {
-				num = 0
-			};
-			var url = datajson.banner[num].url;
-			li[n].innerHTML = "<img src=" + url + " alt='1'/>";
-			//}
+				//if(ajax.readyState == 4 && ajax.status == 200) {
+					//var str = ajax.responseText;
+					//var datajson = JSON.parse(str);
+					var num = n;
+					if(num > li.length - 2) {
+						num = 0
+					};
+					var url = datajson.banner[num].url;
+					li[n].innerHTML = "<img src=" + url + " alt='1'/>";
+				//}
 			//}
 			animation(ul, -n * imgwidth, 30);
 			if(b > li.length - 2) {
@@ -228,9 +181,47 @@ window.onload = function() {
 			}
 			buttonli[b].className = "getbg";
 		}
+		var timer = setInterval(autoPlay, 2000);
+		
+		ulFather.onmouseenter = function() {
+			clearInterval(timer);
 		}
-
+		ulFather.onmouseleave = function() {
+			timer = setInterval(autoPlay, 2000);
+		}
+		left.onclick = function() {
+			n--;
+			b--;
+			if(n < 0) {
+				ul.style.left = -(li.length - 1) * imgwidth + "px";
+				n = li.length - 2;
+			}
+			animation(ul, -n * imgwidth, 30);
+			if(b < 0) {
+				b = 4;
+			}
+			for(var i = 0; i < buttonli.length; i++) {
+				buttonli[i].className = "";
+			}
+			buttonli[b].className = "getbg";
+		}
+		right.onclick = function() {
+			autoPlay();
+		}
+		for(var i = 0; i < buttonli.length; i++) {
+			buttonli[i].index = i;
+			buttonli[i].onclick = function() {
+				n = b = this.index;
+				animation(ul, -n * imgwidth, 30);
+				for(var i = 0; i < buttonli.length; i++) {
+					buttonli[i].className = "";
+				}
+				this.className = "getbg";
+			}
+		}
+		
 		
 	})()
 
 }
+

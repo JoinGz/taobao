@@ -54,16 +54,23 @@
 
 	"banner": [
 		{
-			"url": "../public/images/1.jpg"
+			"url": "./public/images/1.jpg"
 		}, {
-			"url": "../public/images/2.jpg"
+			"url": "./public/images/2.jpg"
 		}, {
-			"url": "../public/images/3.jpg"
+			"url": "./public/images/3.jpg"
 		}, {
-			"url": "../public/images/4.jpg"
+			"url": "./public/images/4.jpg"
 		}, {
-			"url": "../public/images/5.jpg"
+			"url": "./public/images/5.jpg"
 		}
+	],
+	"bt":[
+	{
+		"url":"./public/images/bm-t.jpg"
+	},{
+		"url":"./public/images/bm-b.jpg"
+	}
 	]
 }
 
