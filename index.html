@@ -402,23 +402,40 @@
 								<img src="public/images/Tmall.png" alt="" />
 								<h2>天猫必逛</h2>
 								<span>热门品牌天天上天猫</span>
-								<div><em>1</em>/6</div>
+								<div><em id="em">1</em>/6</div>
 							</div>
 							<div class="gz-banner">
-								<ul class="imgs">
-									<li>
+								<ul class="imgs cg">
+									<li class="one">
 										<div>
-											<img src="public/images/banner-l.jpg" alt="" />
+											<a href=""><img src="public/images/banner-l.jpg" alt="" /></a>
 										</div>
 										<div>
-											<img src="public/images/banner-r.jpg" alt="" />
+											<a href=""><img src="public/images/banner-r.jpg" alt="" /></a>
 										</div>
 									</li>
-									<li style="background: blue;"><h1>2</h1></li>
-									<li style="background: gold;"><h1>3</h1></li>
-									<li style="background: gray;"><h1>4</h1></li>
-									<li style="background: green;"><h1>5</h1></li>
-									<li style="background: greenyellow;"><h1>6</h1></li>
+									<li class="two">
+										<div>
+											<a href=""><img src="" alt="" /></a>
+										</div>
+										<div>
+											<a href=""><img src="" alt="" /></a>
+										</div>
+										<div>
+											<a href=""><img src="" alt="" /></a>
+										</div>
+										<div>
+											<a href=""><img src="" alt="" /></a>
+										</div>
+									</li>
+									<li style="background: gold;">
+										<h1>3</h1></li>
+									<li style="background: gray;">
+										<h1>4</h1></li>
+									<li style="background: green;">
+										<h1>5</h1></li>
+									<li style="background: greenyellow;">
+										<h1>6</h1></li>
 								</ul>
 								<div class="gz-button">
 									<div>
@@ -428,7 +445,7 @@
 										<i class="iconfont icon-jiantou-copy-copy"></i>
 									</div>
 								</div>
-								<div class="gz-hover">
+								<!--<div class="gz-hover">
 									<ul>
 										<li class="getbg"></li>
 										<li></li>
@@ -436,7 +453,7 @@
 										<li></li>
 										<li></li>
 									</ul>
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</div>
@@ -480,6 +497,30 @@
 						<div class="bb clearfloat">
 							<ul>
 								<li>中国向非洲推荐阿里经验</li>
+								<li>创新推动进步，灰洲跨越发展</li>
+								<li>JD东妄想超越Ali里</li>
+								<li>马化腾买了一袋麻花</li>
+							</ul>
+							<ul>
+								<li>2</li>
+								<li>创新推动进步，灰洲跨越发展</li>
+								<li>JD东妄想超越Ali里</li>
+								<li>马化腾买了一袋麻花</li>
+							</ul>
+							<ul>
+								<li>3</li>
+								<li>创新推动进步，灰洲跨越发展</li>
+								<li>JD东妄想超越Ali里</li>
+								<li>马化腾买了一袋麻花</li>
+							</ul>
+							<ul>
+								<li>4</li>
+								<li>创新推动进步，灰洲跨越发展</li>
+								<li>JD东妄想超越Ali里</li>
+								<li>马化腾买了一袋麻花</li>
+							</ul>
+							<ul>
+								<li>5</li>
 								<li>创新推动进步，灰洲跨越发展</li>
 								<li>JD东妄想超越Ali里</li>
 								<li>马化腾买了一袋麻花</li>
@@ -603,6 +644,27 @@
 		<a href="<%=searchbottom[i].url%>" class="<%=searchbottom[i].class%>">
 			<%=searchbottom[i].name%>
 		</a>
+		<%}%>
+	</script>
+	<script type="text/template" id='pic'>
+		
+		<%for(var f = 0 ;f<pic.length;f++){%>
+		<li class="one">
+			<%for(var i = 0 ;i<pic[f].one.length;i++){%>
+			<div>
+				<a href=""><img src="<%=pic[0].one[i].url%>" alt="" /></a>
+			</div>
+			<%}%>
+		</li>
+		
+		<li class="two">
+			<%for(var j = 0 ;j<pic[f].two.length;j++){%>
+			<div>
+				<a href=""><img src="<%=pic[0].two[j].url%>" alt="" /></a>
+			</div>
+			
+			<%}%>
+		</li>
 		<%}%>
 	</script>
 	<script type="text/javascript" src="public/js/main2.js"></script>

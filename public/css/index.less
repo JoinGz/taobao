@@ -9,17 +9,21 @@
 body {
     background: #f1f1f1;
 }
+
 //搜索栏宝贝、天猫背景
-.getbg{
+.getbg {
     background: #f40 !important;
 }
-.rmbg{
+
+.rmbg {
     background: rgba(255, 0, 54, 1);
 }
+
 //字体淘宝色
-.f40{
-    color:#f40 !important;
+.f40 {
+    color: #f40 !important;
 }
+
 .box {
     background: @f5f5f5;
     font-size: 12px;
@@ -160,11 +164,10 @@ body {
                 display: block;
                 float: left;
                 font-size: 12px;
-                color:black;
-                &:hover{
-                    color:black;
+                color: black;
+                &:hover {
+                    color: black;
                 }
-                
             }
         }
         //      .search-middle {
@@ -217,30 +220,28 @@ body {
                 position: absolute;
                 top: 12px;
                 right: 137px;
-               
             }
-            label{
+            label {
                 position: absolute;
-                left:35px;
-                top:11px;
+                left: 35px;
+                top: 11px;
                 font-size: 12px;
                 color: #ccc;
             }
-            .searchend{
-                position:absolute;
+            .searchend {
+                position: absolute;
                 //left:0px;
-                top:40px;
+                top: 40px;
                 //border: 1px solid #969896;
                 width: 500px;
                 z-index: 1;
-                li{
+                li {
                     background: #fff;
-                    color:black;
-                    padding: 2px 8px ;
-                    &:hover{
+                    color: black;
+                    padding: 2px 8px;
+                    &:hover {
                         background: #f1f1f1;
                     }
-                    
                 }
             }
         }
@@ -258,16 +259,14 @@ body {
                     color: #f40;
                 }
             }
-            
         }
-        .more{
+        .more {
             float: left;
             width: 40px;
             height: 25px;
             line-height: 25px;
             a {
                 font-size: 12px;
-                
                 color: #666;
                 &:hover {
                     color: #f40;
@@ -377,7 +376,7 @@ body {
 }
 
 .banner {
-    &>div{
+    &>div {
         float: left;
     }
     .b-l {
@@ -440,10 +439,10 @@ body {
             .bm-t {
                 height: 280px;
                 overflow: hidden;
-                .imgs{
+                .imgs {
                     width: 520*6px;
                     position: relative;
-                    li{
+                    li {
                         float: left;
                         width: 520px;
                         height: 280px;
@@ -495,7 +494,7 @@ body {
                     overflow: hidden;
                     >ul {
                         display: block;
-                        width: 520*6px;
+                        //width: 520*6px;
                         height: 100%;
                         background: #fff;
                         >li {
@@ -503,14 +502,23 @@ body {
                             float: left;
                             width: 520px;
                             height: 100%;
-                            >div {
+                            a{
+                                display: block;
+                            }
+                        }
+                        .one {
+                            div {
                                 width: 50%;
                                 height: 100%;
                                 float: left;
                                 padding: 23px 5px;
                             }
-                            >div:nth-of-type(1) {}
-                            >div:nth-of-type(2) {}
+                        }
+                        .two {
+                            div {
+                                width: 25%;
+                                float: left;
+                            }
                         }
                     }
                 }
@@ -562,7 +570,7 @@ body {
                 display: block;
             }
             >p {
-//             padding: 5px 0;
+                //             padding: 5px 0;
                 display: block;
                 height: 25px;
                 line-height: 25px;
@@ -594,130 +602,121 @@ body {
                 width: 92px;
             }
         }
-        .br-m{
+        .br-m {
             text-align: center;
-            a{
+            a {
                 height: 32px;
                 line-height: 32px;
-                font-size:12px;
-                color:#f40;
+                font-size: 12px;
+                color: #f40;
                 display: block;
                 background: #ffe4dd;
             }
         }
-        .br-b{
-            >.bt{
+        .br-b {
+            >.bt {
                 padding: 7px 0 0 0;
-                ul{
-                padding: 0 10px;
-                text-align: center;
-                li{
-                    float: left;
-                    width: 44px;
-                    height: 24px;
-                    font-size:12px;
-                    line-height: 24px;
-                    margin: 0 5px;
-                    color:#3C3C3C;
-                    &:hover{
-                        font-weight:700;
-                        color:black;
-                        border-bottom: 2px solid #ff4400;
+                ul {
+                    padding: 0 10px;
+                    text-align: center;
+                    li {
+                        float: left;
+                        width: 44px;
+                        height: 24px;
+                        font-size: 12px;
+                        line-height: 24px;
+                        margin: 0 5px;
+                        color: #3C3C3C;
+                        &:hover {
+                            font-weight: 700;
+                            color: black;
+                            border-bottom: 2px solid #ff4400;
+                        }
                     }
                 }
             }
-            }
-            .bb{
-                padding: 0 5px 10px 5px ;
-                ul{
-                    
-                    li{
+            .bb {
+                padding: 0 5px 10px 5px;
+                ul {
+                    display: none;
+                    li {
                         float: left;
                         width: 50%;
                         overflow: hidden;
                         font-size: 12px;
-                        color:@3C3C3C;
+                        color: @3C3C3C;
                         height: 25px;
                         line-height: 25px;
                     }
                 }
+                ul:nth-of-type(1) {
+                    display: block;
+                }
             }
-            
-            
         }
-        .smallbox{
-                ul{
-                    width: 100%;
-                    li{
-                        width: 25%;
-                        float: left;
+        .smallbox {
+            ul {
+                width: 100%;
+                li {
+                    width: 25%;
+                    float: left;
+                    display: block;
+                    text-align: center;
+                    font-size: 12px;
+                    height: 69px;
+                    border-top: 1px solid #f1f1f1;
+                    border-right: 1px solid #f1f1f1;
+                    &:nth-of-type(4) {
+                        border-right: none;
+                    }
+                    &:nth-of-type(8) {
+                        border-right: none;
+                    }
+                    &:nth-of-type(12) {
+                        border-right: none;
+                    }
+                    a {
+                        color: #666;
+                        &:hover {
+                            color: #f40;
+                        }
+                    }
+                    i {
                         display: block;
-                        text-align: center;
-                        font-size: 12px;
-                        height: 69px;
-                        
-                        border-top:1px solid #f1f1f1;
-                        border-right: 1px solid #f1f1f1;
-                        &:nth-of-type(4){
-                            border-right: none;
-                       
-                        }
-                        &:nth-of-type(8){
-                            
-                       border-right: none;
-                        }
-                        &:nth-of-type(12){
-                            
-                       border-right: none;
-                        }
-                        a{
-                            color:#666;
-                            &:hover{
-                                color:#f40;
-                            }
-                        }
-                        i{
-                            display: block;
-                            font-size: 30px;
-                            padding: 6px 0;
-                          
-                        }
-                        
+                        font-size: 30px;
+                        padding: 6px 0;
                     }
                 }
             }
-
+        }
     }
 }
 
-            //banner 下方
-.hor{
-    
-    ul{
+//banner 下方
+.hor {
+    ul {
         width: 900px;
-        
-        li{
+        li {
             width: 20%;
             padding: 10px 5px;
             float: left;
             height: 76px;
-            
-            a{
+            a {
                 display: block;
-                div{
+                div {
                     width: 50%;
                     float: left;
-                    &:nth-of-type(1){
+                    &:nth-of-type(1) {
                         text-align: center;
-                        }
-                    img{
+                    }
+                    img {
                         border-radius: 50%;
                         width: 80%;
                     }
-                    span{
+                    span {
                         font-size: 12px;
                     }
-                    p{
+                    p {
                         font-size: 12px;
                     }
                 }
@@ -732,8 +731,8 @@ body {
     &:hover {
         cursor: pointer;
     }
-    .imgs{
-        position:relative;
+    .imgs {
+        position: relative;
     }
     .gz-button {
         div {

@@ -71,6 +71,49 @@
 	},{
 		"url":"./public/images/bm-b.jpg"
 	}
+	],
+	"pic":[
+		{
+			"one":[
+				{"url":"./public/images/one1.jpg"},
+				{"url":"./public/images/one2.jpg"}
+				
+				
+			],
+			"two":[
+				{"url":"./public/images/two1.jpg"},
+				{"url":"./public/images/two2.jpg"},
+				{"url":"./public/images/two3.jpg"},
+				{"url":"./public/images/two4.jpg"}
+			]
+		},{
+			"one":[
+				{"url":"./public/images/one1.jpg"},
+				{"url":"./public/images/one2.jpg"}
+				
+				
+			],
+			"two":[
+				{"url":"./public/images/two1.jpg"},
+				{"url":"./public/images/two2.jpg"},
+				{"url":"./public/images/two3.jpg"},
+				{"url":"./public/images/two4.jpg"}
+			]
+		},{
+			"one":[
+				{"url":"./public/images/one1.jpg"},
+				{"url":"./public/images/one2.jpg"}
+				
+				
+			],
+			"two":[
+				{"url":"./public/images/two1.jpg"},
+				{"url":"./public/images/two2.jpg"},
+				{"url":"./public/images/two3.jpg"},
+				{"url":"./public/images/two4.jpg"}
+			]
+		}
+	
 	]
 }
 

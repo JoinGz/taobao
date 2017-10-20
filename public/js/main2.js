@@ -131,11 +131,13 @@ window.onload = function() {
 				var newli = ul.children[0].cloneNode(true);
 				ul.appendChild(newli);
 				bmt.innerHTML = "<img src=" + datajson.bt[0].url + " />";
-				bmb.innerHTML = "<img src=" + datajson.bt[1].url + " />"
+				bmb.innerHTML = "<img src=" + datajson.bt[1].url + " />";
+				
+				var resultStr1 = template('pic', datajson);
+				var cg = g(".cg")[0];
+				cg.innerHTML=resultStr1;
 			}
 		}
-
-		
 
 		function autoPlay() {
 			n++;
@@ -151,12 +153,12 @@ window.onload = function() {
 			//if(ajax.readyState == 4 && ajax.status == 200) {
 			//var str = ajax.responseText;
 			//var datajson = JSON.parse(str);
-//			var num = n;
-//			if(num > li.length - 2) {
-//				num = 0
-//			};
-//			var url = datajson.banner[num].url;
-//			li[n].innerHTML = "<img src=" + url + " alt='1'/>";
+			//			var num = n;
+			//			if(num > li.length - 2) {
+			//				num = 0
+			//			};
+			//			var url = datajson.banner[num].url;
+			//			li[n].innerHTML = "<img src=" + url + " alt='1'/>";
 			ajax1();
 			//}
 			//}
@@ -228,44 +230,97 @@ window.onload = function() {
 
 }
 
-function lunbo(ele){
+function lunbo(ele) {
 	var id = document.getElementById(ele);
 	var ul = id.getElementsByClassName("imgs")[0];
+	var banner = id.getElementsByClassName("gz-banner")[0];
 	var li = ul.getElementsByTagName("li");
 	var liwidth = ul.getElementsByTagName("li")[0].offsetWidth;
-	var n=0;
-	var b=0;
-	
-	var lilast=li[0].cloneNode(true);
+	var n = 0;
+	var em = g("#em");
+	var b = 1;
+	var button = id.getElementsByClassName("gz-button")[0];
+	//console.log(button)
+	var buttonl = button.children[0];
+	var buttonr = button.children[1];
+	var lilast = li[0].cloneNode(true);
 	ul.appendChild(lilast);
-	ul.style.width = liwidth*li.length+"px";
-	console.log(li.length)
-	function autoPlay1(){
+	ul.style.width = liwidth * li.length + "px";
+	//console.log(li.length)
+	function autoPlay1() {
 		n++;
 		b++;
-		if(n>li.length-1){
-			ul.style.left="0px";
-			n=1;
+		if(n > li.length - 1) {
+			ul.style.left = "0px";
+			n = 1;
+
 		}
-		animation(ul,-n*liwidth,30);
-		if(b>li.length-2){
-			b=0;
+		if(b > li.length - 1) {
+			b = 1
 		}
-		
+		em.innerHTML = b;
+		animation(ul, -n * liwidth, 30);
+
 	}
-	setInterval(autoPlay1,2000)
+	var tt = setInterval(autoPlay1, 2000);
+	buttonl.onclick = function() {
+		n--;
+		b--;
+		if(n < 0) {
+
+			n = li.length - 2;
+			ul.style.left = -(li.length - 1) * liwidth + "px";
+
+		}
+		if(b < 1) {
+			b = 6
+		}
+		em.innerHTML = b;
+		animation(ul, -n * liwidth, 30);
+
+	}
+	buttonr.onclick = function() {
+		autoPlay1();
+	}
+	banner.onmouseenter = function() {
+		clearInterval(tt)
+	}
+	banner.onmouseleave = function() {
+		tt = setInterval(autoPlay1, 2000);
+	}
+
 }
 lunbo("lunbo")
-function animation(ele, mb, time) {
-			clearInterval(ele.time);
-			var speed = mb > ele.offsetLeft ? 50 : -50;
-			ele.time = setInterval(function() {
-				var val = mb - ele.offsetLeft;
-				ele.style.left = speed + ele.offsetLeft + "px";
-				if(Math.abs(val) < Math.abs(speed)) {
-					ele.style.left = mb + "px";
-					clearInterval(ele.time);
-				}
 
-			}, time)
+function animation(ele, mb, time) {
+	clearInterval(ele.time);
+	var speed = mb > ele.offsetLeft ? 50 : -50;
+	ele.time = setInterval(function() {
+		var val = mb - ele.offsetLeft;
+		ele.style.left = speed + ele.offsetLeft + "px";
+		if(Math.abs(val) < Math.abs(speed)) {
+			ele.style.left = mb + "px";
+			clearInterval(ele.time);
 		}
+
+	}, time)
+}
+
+function hover(ele) {
+	var outbox = g(ele)[0];
+	var hovertop = outbox.getElementsByClassName("bt")[0].children[0].children;
+	var hoverbottom = outbox.getElementsByClassName("bb")[0].children;
+	for(var i = 0; i < hovertop.length; i++) {
+		hovertop[i].index = i;
+		hovertop[i].onmouseenter = function() {
+			var jj = this.index;
+			//console.log(this.index)
+			for(var j = 0; j < hoverbottom.length; j++) {
+				hoverbottom[j].style.display = "none";
+			}
+			hoverbottom[jj].style.display = "block";
+		}
+	}
+
+}
+hover(".br-b");
