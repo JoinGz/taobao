@@ -99,8 +99,7 @@ window.onload = function() {
 	(function() {
 		var a = g(".search-bottom")[0];
 		//var button = g(".gz-button")[0].children[0];
-		var n = 0;
-		var b = 0;
+
 		//datajson 返回的json数据
 		var datajson;
 		var bmr = g(".bm-r")[0];
@@ -151,21 +150,70 @@ window.onload = function() {
 
 		function lunbo(ele) {
 			var ul = ele;
+			var n = 0;
+			var b = 0;
 			var li = ele.children;
 			var ulFather = ele.parentElement;
+			console.log(ulFather);
 			var imgwidth = ele.children[0].offsetWidth;
+			console.log(imgwidth);
 			var hover = ulFather.getElementsByClassName("gz-hover")[0];
 			var buttonli = hover.children[0].children;
 			var left = ulFather.getElementsByClassName("gz-button")[0].children[0];
 			var right = ulFather.getElementsByClassName("gz-button")[0].children[1];
 
-			 timer = setInterval(autoPlay, 2000);
+			function autoPlay() {
+				n++;
+				b++;
+				if(n > li.length - 1) {
+					ul.style.left = "0px";
+					n = 1;
+				}
+				//var ajax = new XMLHttpRequest();
+				//ajax.open("GET", "./APi/alldata.php");
+				//ajax.send();
+				//ajax.onreadystatechange = function() {
+				//if(ajax.readyState == 4 && ajax.status == 200) {
+				//var str = ajax.responseText;
+				//var datajson = JSON.parse(str);
+				var num = n;
+				if(num > li.length - 2) {
+					num = 0
+				};
+				var url = datajson.banner[num].url;
+				li[n].innerHTML = "<img src=" + url + " alt='1'/>";
+				//}
+				//}
+				animation(ul, -n * imgwidth, 30);
+				if(b > li.length - 2) {
+					b = 0;
+				}
+				for(var i = 0; i < buttonli.length; i++) {
+					buttonli[i].className = "";
+				}
+				buttonli[b].className = "getbg";
+			}
+
+			var timer = function(){
+				return function(){
+					setInterval(autoPlay, 2000);
+				}
+			}
+			
+			var x = timer();
+			 setTimeout(x, 0);
 
 			ulFather.onmouseenter = function() {
-				clearInterval(timer);
+				return function(){
+					clearInterval(x);
+				}
+				
 			}
 			ulFather.onmouseleave = function() {
-				timer = setInterval(autoPlay, 2000);
+				return function(){
+					var x = setInterval(autoPlay, 2000);
+				}
+				
 			}
 			left.onclick = function() {
 				n--;
@@ -197,40 +245,9 @@ window.onload = function() {
 					this.className = "getbg";
 				}
 			}
-			function autoPlay() {
-			n++;
-			b++;
-			if(n > li.length - 1) {
-				ul.style.left = "0px";
-				n = 1;
-			}
-			//var ajax = new XMLHttpRequest();
-			//ajax.open("GET", "./APi/alldata.php");
-			//ajax.send();
-			//ajax.onreadystatechange = function() {
-			//if(ajax.readyState == 4 && ajax.status == 200) {
-			//var str = ajax.responseText;
-			//var datajson = JSON.parse(str);
-			var num = n;
-			if(num > li.length - 2) {
-				num = 0
-			};
-			var url = datajson.banner[num].url;
-			li[n].innerHTML = "<img src=" + url + " alt='1'/>";
-			//}
-			//}
-			animation(ul, -n * imgwidth, 30);
-			if(b > li.length - 2) {
-				b = 0;
-			}
-			for(var i = 0; i < buttonli.length; i++) {
-				buttonli[i].className = "";
-			}
-			buttonli[b].className = "getbg";
-		}
+
 		}
 
-		
 	})()
 
 }

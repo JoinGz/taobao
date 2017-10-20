@@ -113,8 +113,7 @@ window.onload = function() {
 		var bmr = g(".bm-r")[0];
 		var bmt = bmr.children[0];
 		var bmb = bmr.children[2];
-		
-		
+
 		var ajax = new XMLHttpRequest();
 		ajax.open("POST", "./APi/alldata.php");
 		ajax.send();
@@ -122,33 +121,21 @@ window.onload = function() {
 			if(ajax.readyState == 4 && ajax.status == 200) {
 				//console.log(ajax.responseText)
 				var str = ajax.responseText;
-				datajson = JSON.parse(str); 
+				datajson = JSON.parse(str);
 				//由JSON字符串转换为JSON对象
 				//console.log(obj.searchbottom[1])
 				var resultStr = template('template', datajson);
 				//console.log(datajson);
 				a.innerHTML = resultStr;
-				li[0].innerHTML="<img src="+ datajson.banner[0].url +" />";
+				li[0].innerHTML = "<img src=" + datajson.banner[0].url + " />";
 				var newli = ul.children[0].cloneNode(true);
 				ul.appendChild(newli);
-				bmt.innerHTML="<img src=" + datajson.bt[0].url+ " />";
-				bmb.innerHTML="<img src=" + datajson.bt[1].url+ " />"
+				bmt.innerHTML = "<img src=" + datajson.bt[0].url + " />";
+				bmb.innerHTML = "<img src=" + datajson.bt[1].url + " />"
 			}
 		}
-		
-		function animation(ele, mb, time) {
-			clearInterval(ele.time);
-			var speed = mb > ele.offsetLeft ? 50 : -50;
-			ele.time = setInterval(function() {
-				var val = mb - ele.offsetLeft;
-				ele.style.left = speed + ele.offsetLeft + "px";
-				if(Math.abs(val) < Math.abs(speed)) {
-					ele.style.left = mb + "px";
-					clearInterval(ele.time);
-				}
 
-			}, time)
-		}
+		
 
 		function autoPlay() {
 			n++;
@@ -161,16 +148,17 @@ window.onload = function() {
 			//ajax.open("GET", "./APi/alldata.php");
 			//ajax.send();
 			//ajax.onreadystatechange = function() {
-				//if(ajax.readyState == 4 && ajax.status == 200) {
-					//var str = ajax.responseText;
-					//var datajson = JSON.parse(str);
-					var num = n;
-					if(num > li.length - 2) {
-						num = 0
-					};
-					var url = datajson.banner[num].url;
-					li[n].innerHTML = "<img src=" + url + " alt='1'/>";
-				//}
+			//if(ajax.readyState == 4 && ajax.status == 200) {
+			//var str = ajax.responseText;
+			//var datajson = JSON.parse(str);
+//			var num = n;
+//			if(num > li.length - 2) {
+//				num = 0
+//			};
+//			var url = datajson.banner[num].url;
+//			li[n].innerHTML = "<img src=" + url + " alt='1'/>";
+			ajax1();
+			//}
 			//}
 			animation(ul, -n * imgwidth, 30);
 			if(b > li.length - 2) {
@@ -182,7 +170,7 @@ window.onload = function() {
 			buttonli[b].className = "getbg";
 		}
 		var timer = setInterval(autoPlay, 2000);
-		
+
 		ulFather.onmouseenter = function() {
 			clearInterval(timer);
 		}
@@ -192,10 +180,16 @@ window.onload = function() {
 		left.onclick = function() {
 			n--;
 			b--;
+
+			var num = n;
 			if(n < 0) {
 				ul.style.left = -(li.length - 1) * imgwidth + "px";
 				n = li.length - 2;
+				num = n;
 			}
+			var url = datajson.banner[num].url;
+			li[n].innerHTML = "<img src=" + url + " alt='1'/>";
+
 			animation(ul, -n * imgwidth, 30);
 			if(b < 0) {
 				b = 4;
@@ -212,6 +206,7 @@ window.onload = function() {
 			buttonli[i].index = i;
 			buttonli[i].onclick = function() {
 				n = b = this.index;
+				ajax1();
 				animation(ul, -n * imgwidth, 30);
 				for(var i = 0; i < buttonli.length; i++) {
 					buttonli[i].className = "";
@@ -219,9 +214,58 @@ window.onload = function() {
 				this.className = "getbg";
 			}
 		}
-		
-		
+
+		function ajax1() {
+			var num = n;
+			if(num > li.length - 2) {
+				num = 0
+			};
+			var url = datajson.banner[num].url;
+			li[n].innerHTML = "<img src=" + url + " alt='1'/>";
+		}
+
 	})()
 
 }
 
+function lunbo(ele){
+	var id = document.getElementById(ele);
+	var ul = id.getElementsByClassName("imgs")[0];
+	var li = ul.getElementsByTagName("li");
+	var liwidth = ul.getElementsByTagName("li")[0].offsetWidth;
+	var n=0;
+	var b=0;
+	
+	var lilast=li[0].cloneNode(true);
+	ul.appendChild(lilast);
+	ul.style.width = liwidth*li.length+"px";
+	console.log(li.length)
+	function autoPlay1(){
+		n++;
+		b++;
+		if(n>li.length-1){
+			ul.style.left="0px";
+			n=1;
+		}
+		animation(ul,-n*liwidth,30);
+		if(b>li.length-2){
+			b=0;
+		}
+		
+	}
+	setInterval(autoPlay1,2000)
+}
+lunbo("lunbo")
+function animation(ele, mb, time) {
+			clearInterval(ele.time);
+			var speed = mb > ele.offsetLeft ? 50 : -50;
+			ele.time = setInterval(function() {
+				var val = mb - ele.offsetLeft;
+				ele.style.left = speed + ele.offsetLeft + "px";
+				if(Math.abs(val) < Math.abs(speed)) {
+					ele.style.left = mb + "px";
+					clearInterval(ele.time);
+				}
+
+			}, time)
+		}
