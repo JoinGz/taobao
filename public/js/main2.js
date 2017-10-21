@@ -132,10 +132,14 @@ window.onload = function() {
 				ul.appendChild(newli);
 				bmt.innerHTML = "<img src=" + datajson.bt[0].url + " />";
 				bmb.innerHTML = "<img src=" + datajson.bt[1].url + " />";
-				
+
 				var resultStr1 = template('pic', datajson);
 				var cg = g(".cg")[0];
-				cg.innerHTML=resultStr1;
+				cg.innerHTML = resultStr1;
+				lunbo("lunbo");
+				var resultStr3 = template('shop', datajson);
+				var shop = g(".hor")[0].children[0];
+				shop.innerHTML=resultStr3;
 			}
 		}
 
@@ -290,7 +294,6 @@ function lunbo(ele) {
 	}
 
 }
-lunbo("lunbo")
 
 function animation(ele, mb, time) {
 	clearInterval(ele.time);
@@ -312,11 +315,30 @@ function hover(ele) {
 	var hoverbottom = outbox.getElementsByClassName("bb")[0].children;
 	for(var i = 0; i < hovertop.length; i++) {
 		hovertop[i].index = i;
+		hovertop[i].bool = true;
 		hovertop[i].onmouseenter = function() {
 			var jj = this.index;
 			//console.log(this.index)
+			if(this.bool) {
+				this.bool=false;
+				var hoverajax = new XMLHttpRequest();
+				hoverajax.open("POST", "./APi/hover.php");
+				hoverajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				hoverajax.send("index1=" + jj);
+				hoverajax.onreadystatechange = function() {
+					if(hoverajax.status == 200 && hoverajax.readyState == 4) {
+						var str = hoverajax.responseText;
+						var datajson2 = JSON.parse(str);
+						var resultStr2 = template('hovershow', datajson2);
+						hoverbottom[jj].innerHTML = resultStr2;
+						
+					}
+				}
+			}
+
 			for(var j = 0; j < hoverbottom.length; j++) {
 				hoverbottom[j].style.display = "none";
+
 			}
 			hoverbottom[jj].style.display = "block";
 		}

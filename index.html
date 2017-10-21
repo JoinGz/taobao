@@ -252,8 +252,10 @@
 						<li>
 							<i class="iconfont icon-choiceness"></i>
 							<span>
-								<a href="">女装</a> / 
-								<a href="">男装</a> / 
+								<a href="">女装</a>
+								/
+								<a href="">男装</a>
+								/
 								<a href="">内衣</a>
 							</span>
 							<i class="iconfont icon-jiantou-copy-copy"></i>
@@ -571,7 +573,7 @@
 				<!--banner下方-->
 
 			</div>
-			<div class="hor clearfloat">
+			<div class="hor clearfloat white">
 				<ul>
 					<li>
 						<a href="">
@@ -647,7 +649,7 @@
 		<%}%>
 	</script>
 	<script type="text/template" id='pic'>
-		
+
 		<%for(var f = 0 ;f<pic.length;f++){%>
 		<li class="one">
 			<%for(var i = 0 ;i<pic[f].one.length;i++){%>
@@ -656,16 +658,42 @@
 			</div>
 			<%}%>
 		</li>
-		
+
 		<li class="two">
 			<%for(var j = 0 ;j<pic[f].two.length;j++){%>
 			<div>
 				<a href=""><img src="<%=pic[0].two[j].url%>" alt="" /></a>
 			</div>
-			
+
 			<%}%>
 		</li>
 		<%}%>
+	</script>
+	<script type="text/template" id='hovershow'>
+		
+			<%for(var p = 0 ;p<data.length;p++){%>
+			<li class="<%=data[p].class%>"> <%=data[p].html1%> </li>
+			<%}%>
+		
+	</script>
+	<script type="text/template" id='shop'>
+		<%for(var i = 0 ;i<shop.length;i++){%>
+		<li>
+						<a href="<%=shop[i].url%>">
+							<div>
+								<img src="<%=shop[i].pic%>" alt="" />
+							</div>
+							<div>
+								<h3><%=shop[i].title%></h3>
+								<span><%=shop[i].jiesao%></span>
+								<p><i class="iconfont icon-hot1"></i><%=shop[i].hot%></p>
+							</div>
+						</a>
+		</li>
+		<%}%>	
+			
+			
+		
 	</script>
 	<script type="text/javascript" src="public/js/main2.js"></script>
 

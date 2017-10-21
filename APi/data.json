@@ -114,6 +114,39 @@
 			]
 		}
 	
+	],
+	"shop":[
+		{
+			"url":"#",
+			"pic":"./public/images/tb.webp.jpg",
+			"title":"怕冷星人",
+			"hot":"998",
+			"jiesao":"过冬必杀技"
+		},{
+			"url":"#",
+			"pic":"./public/images/tb2.webp.jpg",
+			"title":"男神Style",
+			"hot":"30998",
+			"jiesao":"妇女之友"
+		},{
+			"url":"#",
+			"pic":"./public/images/tb3.webp.jpg",
+			"title":"旅行家",
+			"hot":"666999",
+			"jiesao":"打野必备"
+		},{
+			"url":"#",
+			"pic":"./public/images/tb4.webp.jpg",
+			"title":"家有萌娃",
+			"hot":"9098",
+			"jiesao":"嘿嘿嘿"
+		},{
+			"url":"#",
+			"pic":"./public/images/tb5.webp.jpg",
+			"title":"趣玩先锋",
+			"hot":"6751215",
+			"jiesao":"有点意思"
+		}
 	]
 }
 
