@@ -1,5 +1,6 @@
 <?php
 	$index1 = $_POST["index1"];
+	sleep(1);
 	switch ($index1){
 		case "0":
 		$jsonStr = file_get_contents('./one.json');

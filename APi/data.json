@@ -147,6 +147,57 @@
 			"hot":"6751215",
 			"jiesao":"有点意思"
 		}
+	],
+	"icon":[
+		{
+			"pic":"./public/images/icon1.jpg",
+			"content":"淘宝",
+			"er":"./public/images/erwima.jpg"
+		},
+		{
+			"pic":"./public/images/icon2.jpg",
+			"content":"天猫",
+			"er":"./public/images/erwima.jpg"
+		},
+		{
+			"pic":"./public/images/icon3.jpg",
+			"content":"聚划算",
+			"er":"./public/images/erwima.jpg"
+		},
+		{
+			"pic":"./public/images/icon4.jpg",
+			"content":"支付宝",
+			"er":"./public/images/erwima.jpg"
+		},
+		{
+			"pic":"./public/images/icon5.jpg",
+			"content":"旺旺",
+			"er":"./public/images/erwima.jpg"
+		},
+		{
+			"pic":"./public/images/icon6.jpg",
+			"content":"钱盾",
+			"er":"./public/images/erwima.jpg"
+		},
+		{
+			"pic":"./public/images/icon7.jpg",
+			"content":"虾米",
+			"er":"./public/images/erwima.jpg"
+		},
+		{
+			"pic":"./public/images/icon8.jpg",
+			"content":"蚂蚁聚宝",
+			"er":"./public/images/erwima.jpg"
+		},
+		{
+			"pic":"./public/images/icon9.jpg",
+			"content":"叮叮",
+			"er":"./public/images/erwima.jpg"
+		},{
+			"pic":"./public/images/icon10.jpg",
+			"content":"土豆",
+			"er":"./public/images/erwima.jpg"
+		}
 	]
 }
 

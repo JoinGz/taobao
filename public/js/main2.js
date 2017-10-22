@@ -140,6 +140,10 @@ window.onload = function() {
 				var resultStr3 = template('shop', datajson);
 				var shop = g(".hor")[0].children[0];
 				shop.innerHTML=resultStr3;
+				var resultStr4 = template('icon', datajson);
+				var icon = g(".theapp")[0].children[0];
+				icon.innerHTML=resultStr4;
+				
 			}
 		}
 
@@ -175,13 +179,13 @@ window.onload = function() {
 			}
 			buttonli[b].className = "getbg";
 		}
-		var timer = setInterval(autoPlay, 2000);
+		var timer = setInterval(autoPlay, 5000);
 
 		ulFather.onmouseenter = function() {
 			clearInterval(timer);
 		}
 		ulFather.onmouseleave = function() {
-			timer = setInterval(autoPlay, 2000);
+			timer = setInterval(autoPlay, 5000);
 		}
 		left.onclick = function() {
 			n--;
@@ -266,7 +270,7 @@ function lunbo(ele) {
 		animation(ul, -n * liwidth, 30);
 
 	}
-	var tt = setInterval(autoPlay1, 2000);
+	var tt = setInterval(autoPlay1, 3000);
 	buttonl.onclick = function() {
 		n--;
 		b--;
@@ -290,7 +294,7 @@ function lunbo(ele) {
 		clearInterval(tt)
 	}
 	banner.onmouseleave = function() {
-		tt = setInterval(autoPlay1, 2000);
+		tt = setInterval(autoPlay1, 3000);
 	}
 
 }
@@ -346,3 +350,19 @@ function hover(ele) {
 
 }
 hover(".br-b");
+//background 修改
+var jinlinbg = g(".smallbox")[0].getElementsByTagName("span");
+//console.log(jinlinbg)
+for(var i=0;i<jinlinbg.length;i++){
+	jinlinbg[i].style.background="url(./public/images/jinlin.png) 0px " + (-i*44) +"px no-repeat";
+}
+//var tryajax = new XMLHttpRequest();
+//tryajax.open("GET","./APi/newHTML.php");
+//tryajax.send();
+//tryajax.onreadystatechange=function(){
+//	if(tryajax.status=200 && tryajax.readyState==4){
+//		var str = tryajax.responseText;
+//		document.body.innerHTML+=str;
+//		
+//	}
+//}
