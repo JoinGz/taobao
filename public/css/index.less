@@ -872,8 +872,29 @@ body a {
 // 第二屏
 .twobox {
     margin-top: 10px;
+    height: 982px;
     .leftbox {
         margin-right: 10px;
+    }
+    .h3 {
+        position: relative;
+        color: #999999;
+        font-size: 12px;
+        font-weight: 400;
+        >span {
+            line-height: 24px;
+            height: 24px;
+        }
+        >img {
+            height: 24px;
+            float: left;
+            margin-right: 15px;
+        }
+        >a {
+            color: #999999;
+            position: absolute;
+            right: 0;
+        }
     }
     >div {
         width: 590px;
@@ -881,26 +902,6 @@ body a {
         background: #fff;
         padding: 20px;
         float: left;
-        h3 {
-            position: relative;
-            color: #999999;
-            font-size: 12px;
-            font-weight: 400;
-            >span {
-                line-height: 24px;
-                height: 24px;
-            }
-            >img {
-                height: 24px;
-                float: left;
-                margin-right: 15px;
-            }
-            >a {
-                color: #999999;
-                position: absolute;
-                right: 0;
-            }
-        }
         li {
             float: left;
             width: 180px;
@@ -910,24 +911,23 @@ body a {
                 height: 180px;
                 width: 180px;
                 transition: 0.2s;
-                &:hover{
+                &:hover {
                     background: #8b8a8e;
                 }
-                img{
+                img {
                     opacity: 0.9;
                     width: 100%;
                     height: 100%;
                 }
             }
-            &:nth-of-type(2){
+            &:nth-of-type(2) {
                 margin: 0 5px;
                 margin-top: 20px;
             }
-            &:nth-of-type(5){
+            &:nth-of-type(5) {
                 margin: 0 5px;
                 margin-top: 20px;
             }
-           
             div:nth-of-type(2) {
                 padding: 0px 4px 0px 6px;
                 span {
@@ -943,14 +943,97 @@ body a {
                     font-size: 14px;
                 }
                 em {
-                   
-                    
                     display: block;
-                    
                     color: #35b1ff;
                     padding: 7px 0 0 0;
                 }
             }
         }
     }
+    .threebox {
+        width: 100%;
+        margin-top: 10px;
+        padding: 20px;
+        background: #fff;
+        height: 264px;
+        >div {
+            height: 180px;
+            width: 355px;
+            float: left;
+            img {
+                height: 100%;
+                display: block;
+                float: left;
+            }
+            >div {
+                >div {
+                    width: 175px;
+                    float: left;
+                    color: #f40;
+                    p {
+                        color: #000000;
+                        padding: 30px 0 60px 0;
+                        color: black;
+                    }
+                    span {
+                        font-size: 23px;
+                    }
+                    del {
+                        color: #999;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        >div:nth-of-type(2) {
+            margin: 0px 42.5px;
+        }
+    }
+    .twoad {
+        width: 100%;
+        height: 90px;
+        padding: 10px 0;
+        background: #f4f4f4;
+    }
 }
+
+//fixed 
+.fixed {
+    width: 100%;
+    position: fixed;
+    top:0;
+    background: #fff;
+    z-index: 999;
+    .logo {
+        width: 190px;
+        display: block !important;
+        height: 40px;
+        a{
+            display: block;
+        }
+    }
+    .search {
+        padding: 5px 0;
+        .logo {
+            display: none;
+        }
+        .input {
+           
+            .search-up {
+                display: none;
+            }
+            
+            .search-bottom {
+                display: none;
+            }
+            .more {
+                display: none;
+            }
+        }
+        .ad {
+            display: none;
+        }
+    }
+}
+
+

@@ -139,11 +139,11 @@ window.onload = function() {
 				lunbo("lunbo");
 				var resultStr3 = template('shop', datajson);
 				var shop = g(".hor")[0].children[0];
-				shop.innerHTML=resultStr3;
+				shop.innerHTML = resultStr3;
 				var resultStr4 = template('icon', datajson);
 				var icon = g(".theapp")[0].children[0];
-				icon.innerHTML=resultStr4;
-				
+				icon.innerHTML = resultStr4;
+
 			}
 		}
 
@@ -324,7 +324,7 @@ function hover(ele) {
 			var jj = this.index;
 			//console.log(this.index)
 			if(this.bool) {
-				this.bool=false;
+				this.bool = false;
 				var hoverajax = new XMLHttpRequest();
 				hoverajax.open("POST", "./APi/hover.php");
 				hoverajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -335,7 +335,7 @@ function hover(ele) {
 						var datajson2 = JSON.parse(str);
 						var resultStr2 = template('hovershow', datajson2);
 						hoverbottom[jj].innerHTML = resultStr2;
-						
+
 					}
 				}
 			}
@@ -353,16 +353,79 @@ hover(".br-b");
 //background 修改
 var jinlinbg = g(".smallbox")[0].getElementsByTagName("span");
 //console.log(jinlinbg)
-for(var i=0;i<jinlinbg.length;i++){
-	jinlinbg[i].style.background="url(./public/images/jinlin.png) 0px " + (-i*44) +"px no-repeat";
+for(var i = 0; i < jinlinbg.length; i++) {
+	jinlinbg[i].style.background = "url(./public/images/jinlin.png) 0px " + (-i * 44) + "px no-repeat";
 }
-//var tryajax = new XMLHttpRequest();
-//tryajax.open("GET","./APi/newHTML.php");
-//tryajax.send();
-//tryajax.onreadystatechange=function(){
-//	if(tryajax.status=200 && tryajax.readyState==4){
-//		var str = tryajax.responseText;
-//		document.body.innerHTML+=str;
-//		
+
+var bodyheight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+var twobox = g(".twobox")[0];
+twobox.a = true;
+//var boxtop = twobox.offsetTop;
+//var scrollbool = true;
+var three = g(".three")[0];
+//var threeboxtop = three.offsetTop;
+three.a = true;
+//window.onscroll = function() {
+//	var scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+//	if(scrollbool) {
+//		if(bodyheight > boxtop || scrolltop + bodyheight > boxtop) {
+//			scrollbool = false;
+//			var tryajax = new XMLHttpRequest();
+//			tryajax.open("GET", "./APi/newHTML.php");
+//			tryajax.send();
+//			tryajax.onreadystatechange = function() {
+//				if(tryajax.status = 200 && tryajax.readyState == 4) {
+//					var str = tryajax.responseText;
+//					//console.log(str);
+//					//twobox = g(".twobox")[0];
+//					twobox.innerHTML = str;
+//
+//				}
+//			}
+//		}
 //	}
+//
 //}
+	var search211 = g(".search")[0];
+	var searchpar = search211.parentElement;
+	var toptopfather = searchpar.parentElement;
+	var title = g(".title")[0];
+	var titletop = g(".title")[0].offsetTop;
+	var img211 = g(".logoimg")[0];
+
+window.onscroll = function() {
+	var scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+	if(scrolltop>titletop){
+		toptopfather.className="white clearfloat fixed";
+		title.style.marginTop="131px";
+		img211.src="public/images/logo2.png";
+	}else{
+		toptopfather.className="white clearfloat";
+		title.style.marginTop="0px";
+		img211.src="public/images/logo.png";
+	}
+	gundong(twobox,bodyheight,scrolltop);
+	gundong(three,bodyheight,scrolltop);
+	
+}
+
+function gundong(ele, bodyheight, scrolltop) {
+	var boxtop = ele.offsetTop;
+	if(ele.a) {
+		if(bodyheight > boxtop || scrolltop + bodyheight > boxtop) {
+			ele.a = false;
+			var tryajax = new XMLHttpRequest();
+			tryajax.open("GET", "./APi/newHTML.php");
+			tryajax.send();
+			tryajax.onreadystatechange = function() {
+				if(tryajax.status = 200 && tryajax.readyState == 4) {
+					var str = tryajax.responseText;
+					//console.log(str);
+					//twobox = g(".twobox")[0];
+					ele.innerHTML = str;
+
+				}
+			}
+		}
+	}
+}
