@@ -143,7 +143,51 @@ body {
 .white {
     background: #fff;
 }
-
+//右侧固定导航
+.navbar{
+    position: absolute;
+    top:837px;
+    right: 50%;
+    width: 50px;
+    margin-right: -655px;
+    background: #fff;
+    
+    i{
+        position:absolute;
+        height: 30px;
+        width: 50px;
+        display: inline-block;
+        font-size: 35px;
+        z-index: -1;
+        top:-35px;
+        color: #f40;
+        text-align: center;
+    }
+    li{
+        height: 50px;
+        text-align: center;
+        font-size: 13px;
+        padding: 10px 10px 0 10px;
+        position: relative;
+        z-index: 2;
+        &:hover{
+            font-weight: 700;
+            color:#fff;
+            background: #ff6006;
+            cursor: pointer;
+        }
+        
+    }
+    li:after{
+            content: "";
+            border-bottom: 1px solid #f1f1f1;
+            width: 34px;
+            left:8px;
+            bottom: -1px;
+            position: absolute;
+            z-index: 1;
+    }
+}
 .search {
     padding: 30px 0 0 0;
     .logo {

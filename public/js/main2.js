@@ -386,27 +386,35 @@ three.a = true;
 //	}
 //
 //}
-	var search211 = g(".search")[0];
-	var searchpar = search211.parentElement;
-	var toptopfather = searchpar.parentElement;
-	var title = g(".title")[0];
-	var titletop = g(".title")[0].offsetTop;
-	var img211 = g(".logoimg")[0];
-
+var search211 = g(".search")[0];
+var searchpar = search211.parentElement;
+var toptopfather = searchpar.parentElement;
+var title = g(".title")[0];
+var titletop = g(".title")[0].offsetTop;
+var img211 = g(".logoimg")[0];
+var navbar = g(".navbar")[0];
+var navbarheight = navbar.offsetTop;
 window.onscroll = function() {
-	var scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-	if(scrolltop>titletop){
-		toptopfather.className="white clearfloat fixed";
-		title.style.marginTop="131px";
-		img211.src="public/images/logo2.png";
-	}else{
-		toptopfather.className="white clearfloat";
-		title.style.marginTop="0px";
-		img211.src="public/images/logo.png";
+	scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+	if(scrolltop > titletop) {
+		toptopfather.className = "white clearfloat fixed";
+		title.style.marginTop = "131px";
+		img211.src = "public/images/logo2.png";
+	} else {
+		toptopfather.className = "white clearfloat";
+		title.style.marginTop = "0px";
+		img211.src = "public/images/logo.png";
 	}
-	gundong(twobox,bodyheight,scrolltop);
-	gundong(three,bodyheight,scrolltop);
-	
+	gundong(twobox, bodyheight, scrolltop);
+	gundong(three, bodyheight, scrolltop);
+	if(scrolltop > navbarheight - 85) {
+		navbar.style.position = "fixed";
+		navbar.style.top = "85px";
+	} else {
+		navbar.style.position = "absolute";
+		navbar.style.top = "837px";
+	}
+
 }
 
 function gundong(ele, bodyheight, scrolltop) {
@@ -428,4 +436,70 @@ function gundong(ele, bodyheight, scrolltop) {
 			}
 		}
 	}
+}
+gundong(twobox, bodyheight, 0);
+gundong(three, bodyheight, 0);
+//右边导航栏点击反应
+var color = ["#8d7afb", "#f05", "#a8c001", "#ff4400"];
+var navli = navbar.getElementsByTagName("li");
+var boxbox = g(".twobox");
+for(var i = 0; i < navli.length; i++) {
+	navli[i].index = i;
+	navli[i].style.color = color[i];
+
+	switch(i) {
+		case 0:
+			navli[i].onclick = function() {
+				scrollbox(0, 30);
+			}
+			break;
+		case 1:
+			navli[i].onclick = function() {
+				scrollbox(twobox, 30);
+			}
+			break;
+		case 2:
+			navli[i].onclick = function() {
+				scrollbox(three, 30);
+			}
+			break;
+		case 3:
+			navli[i].onclick = function() {
+				scrollbox(0, 30);
+			}
+			break;
+	}
+
+}
+
+function scrollbox(ele, ms) {
+	clearInterval(time);
+
+	if(ele == 0) {
+		var time = setInterval(function() {
+			var step = (0 - scrolltop) / 5;
+			step = step > 0 ? Math.ceil(step) : Math.floor(step);
+			scrolltop = scrolltop + step;
+			window.scrollTo(0, scrolltop);
+			if(Math.abs(0 - scrolltop) <= Math.abs(step)) {
+				window.scrollTo(0, 0);
+				clearInterval(time);
+			}
+
+		}, ms)
+	} else {
+		ele.offsetTop1 = ele.offsetTop - 50;
+		var time = setInterval(function() {
+			var step = (ele.offsetTop1 - scrolltop) / 5;
+			step = step > 0 ? Math.ceil(step) : Math.floor(step);
+			scrolltop = scrolltop + step;
+			window.scrollTo(0, scrolltop);
+			if(Math.abs(ele.offsetTop1 - scrolltop) <= Math.abs(step)) {
+				window.scrollTo(0, ele.offsetTop1);
+				clearInterval(time);
+			}
+
+		}, ms)
+	}
+
 }
