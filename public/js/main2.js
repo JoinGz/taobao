@@ -394,6 +394,7 @@ var titletop = g(".title")[0].offsetTop;
 var img211 = g(".logoimg")[0];
 var navbar = g(".navbar")[0];
 var navbarheight = navbar.offsetTop;
+var footbool = true;
 window.onscroll = function() {
 	scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 	if(scrolltop > titletop) {
@@ -402,11 +403,12 @@ window.onscroll = function() {
 		img211.src = "public/images/logo2.png";
 	} else {
 		toptopfather.className = "white clearfloat";
-		title.style.marginTop = "0px";
+		title.style.marginTop = "-15px";
 		img211.src = "public/images/logo.png";
 	}
 	gundong(twobox, bodyheight, scrolltop);
 	gundong(three, bodyheight, scrolltop);
+	//搜索栏
 	if(scrolltop > navbarheight - 85) {
 		navbar.style.position = "fixed";
 		navbar.style.top = "85px";
@@ -414,6 +416,46 @@ window.onscroll = function() {
 		navbar.style.position = "absolute";
 		navbar.style.top = "837px";
 	}
+	//右边导航栏
+	
+	if(scrolltop<twobox.offsetTop-70){
+		for(var i = 0; i < navli.length; i++) {
+			navli[i].className="";
+			navli[i].style.color = color[i];
+		}
+		navli[0].className="on";
+		navli[0].style.color = "#FFFFFF";
+	}else if(scrolltop>twobox.offsetTop-70 && scrolltop<three.offsetTop-150){
+		for(var i = 0; i < navli.length; i++) {
+			navli[i].className="";
+			navli[i].style.color = color[i];
+		}
+		navli[1].className="on";
+		navli[1].style.color = "#FFFFFF";
+	}else{
+		for(var i = 0; i < navli.length; i++) {
+			navli[i].className="";
+			navli[i].style.color = color[i];
+		}
+		navli[2].className="on";
+		navli[2].style.color = "#FFFFFF";
+	}
+	if(footbool){
+		if(scrolltop>three.offsetTop+three.offsetHeight/3){
+		footbool=false;
+		var footajax = new XMLHttpRequest();
+		footajax.open("GET","./APi/foot.php");
+		footajax.send();
+		footajax.onreadystatechange=function(){
+			if(footajax.status = 200 && footajax.readyState == 4){
+				var str = footajax.responseText;
+				var foot=g(".foot")[0];
+				foot.innerHTML=str;
+			}
+		}
+		}
+	}
+	
 
 }
 
@@ -446,7 +488,8 @@ var boxbox = g(".twobox");
 for(var i = 0; i < navli.length; i++) {
 	navli[i].index = i;
 	navli[i].style.color = color[i];
-
+	navli[i].color=color[i];
+	
 	switch(i) {
 		case 0:
 			navli[i].onclick = function() {
@@ -469,6 +512,14 @@ for(var i = 0; i < navli.length; i++) {
 			}
 			break;
 	}
+	
+	navli[i].onmouseenter=function(){
+		navli[this.index].style.color="#fff";
+	}
+	navli[i].onmouseleave=function(){
+		navli[this.index].style.color=navli[this.index].color;
+	}
+	
 
 }
 
@@ -502,4 +553,10 @@ function scrollbox(ele, ms) {
 		}, ms)
 	}
 
+}
+//关闭广告
+var deleteAD = g(".delete")[0];
+deleteAD.onclick=function(){
+	var fa = deleteAD.parentElement;
+	fa.style.display="none";
 }
